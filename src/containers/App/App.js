@@ -8,15 +8,21 @@ import DetailsPage from '../../pages/DetailsPage';
 
 import './App.css';
 
+const urls = {
+  home: "/",
+  details: "/details",
+  create: "/create",
+}
+
 const navigationList = [
-  { url: "/", title: "Questions", page: HomePage },
-  { url: "/details", title: "Question details", page: DetailsPage },
-  { url: "/create", title: "Create question", page: CreatePage }
+  { url: urls.home, title: "Questions", page: HomePage },
+  { url: urls.details, title: "Question details", page: DetailsPage },
+  { url: urls.create, title: "Create question", page: CreatePage }
 ];
 
 export default () => (
   <Aux>
-    <Navigation navList={ navigationList } />
+    <Navigation navList={ urls } />
     <main>
       <Switch>
         { navigationList.map((nav, index) => (

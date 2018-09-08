@@ -14,8 +14,14 @@ import { Link } from "react-router-dom";
 const navigation = (props) => {
   return (
     <header>
-      <h1>{ props.title }</h1>
+      <nav>
+        <Link to={ nav.home.url }> { nav.title }</Link>
+        <h1>{ props.title }</h1>
+        <Link to={ nav.create.url }> { nav.title }</Link>
+      </nav>
     </header>
+
+
   );
 }
 
