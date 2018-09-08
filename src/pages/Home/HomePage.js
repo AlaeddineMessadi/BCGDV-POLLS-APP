@@ -7,7 +7,7 @@ import Aux from '../../hoc/Aux';
 
 import ApiService from '../../services/ApiService';
 import Card from '../../components/Card/Card';
-import helper from '../../utils/Utils';
+import utils from '../../utils/Utils';
 import classes from './HomePage.scss';
 
 class homePage extends Component {
@@ -26,16 +26,15 @@ class homePage extends Component {
   }
 
   render() {
-
     return (
       <Aux>
-        <h1>Questions</h1>
+        <h2>Questions</h2>
         <div className={ classes.container }>
           {
             this.state.questions.map((q, index) => (
               <Card
                 key={ index }
-                id={ helper.idExtractor(q.url) }
+                id={ utils.idExtractor(q.url) }
                 question={ q.question }
                 date={ q.published_at }
                 choices={ q.choices } />
