@@ -3,25 +3,11 @@ import { Switch, Route } from "react-router-dom";
 
 import Aux from '../../hoc/Aux';
 import Navigation from '../../components/Navigation/Navigation';
-import HomePage from '../../pages/Home/HomePage';
-import CreatePage from '../../pages/Create/CreatePage';
-import DetailsPage from '../../pages/Details/DetailsPage';
+import { appTitle, urls, navigationList } from '../../resources/constants';
 
 import './App.css';
 
-const appTitle = "BCGDV Poll App";
-
-const urls = {
-  home: "/",
-  details: "/details",
-  create: "/create",
-}
-
-const navigationList = [
-  { url: urls.home, page: HomePage },
-  { url: urls.details, page: DetailsPage },
-  { url: urls.create, page: CreatePage }
-];
+console.log(urls)
 
 export default () => (
   <Aux>

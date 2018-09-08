@@ -6,17 +6,24 @@ import React, { Component } from 'react';
 import Aux from '../../hoc/Aux';
 
 import ApiService from '../../services/ApiService';
+import Card from '../../components/Card/Card';
 
 import classes from './HomePage.scss';
 
 class homePage extends Component {
   constructor(props) {
     super(props);
-    this.state = { questions: [] };
+    this.state = {
+      questions: [],
+      page: 1
+    };
   }
 
   componentDidMount() {
-    console.log(ApiService.entryPoint);
+    ApiService.get(`/questions?page=${this.state.page}`, (status, data) => {
+      console.log(data)
+      this.setState({ questions: data });
+    })
   }
 
   render() {
@@ -25,8 +32,16 @@ class homePage extends Component {
       <Aux>
         <h1>Questions</h1>
         <div className={ classes.container }>
-          List of questions
-          </div>
+          {
+            this.state.questions.map((q, index) => (
+              <Card
+                key={ index }
+                question={ q.question }
+                date={ q.published_at }
+                choices={ q.choices } />
+            ))
+          }
+        </div>
       </Aux>
     );
   }
