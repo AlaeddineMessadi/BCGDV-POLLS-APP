@@ -19,7 +19,7 @@ const navigation = (props) => {
       <nav className={ classes.navigation }>
         <ul>
           <li>
-            <Link to={ props.navList.home } className={ classes.btn }> { "<Back" } </Link>
+            <Link to={ props.navList.home } className={ classes.btn }>Home</Link>
           </li>
           <li className={ classes.title }><h1>{ props.appTitle }</h1></li>
           <li>
