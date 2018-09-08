@@ -25,10 +25,9 @@ class detailsPage extends Component {
   }
 
   componentDidMount() {
-    ApiService.get(`/questions/${this.state.questionId}`, (status, data) => {
+    ApiService.get(`/questions/${this.state.questionId}`, {}, (status, data) => {
       // set question state and calculate and set total votes for choices
       this.setState({ question: data, totalVotes: utils.totalVotesExtractor(data.choices) });
-
     })
   }
 
@@ -39,6 +38,7 @@ class detailsPage extends Component {
     // set element as active and set the vote id in the state
     target.className = classes.active;
     const choiceId = e.currentTarget.attributes['data-id'].value;
+    // update active state 
     this.setState({ active: e.currentTarget, choiceId })
 
   }

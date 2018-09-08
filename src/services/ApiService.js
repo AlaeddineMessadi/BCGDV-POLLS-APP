@@ -42,9 +42,10 @@ class ApiService {
     }
   }
 
-  get = (path, callback) => {
-    console.log(path)
-    return this.service.get(path).then(
+  get = (path, params, callback) => {
+    return this.service.get(path, {
+      params: params
+    }).then(
       (response) => callback(response.status, response.data)
     );
   }

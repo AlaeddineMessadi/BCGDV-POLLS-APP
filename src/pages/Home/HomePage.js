@@ -20,8 +20,12 @@ class homePage extends Component {
   }
 
   componentDidMount() {
-    ApiService.get(`/questions?page=${this.state.page}`, (status, data) => {
-      this.setState({ questions: data });
+    this.loadQuestions(this.state.page);
+  }
+
+  loadQuestions = (page) => {
+    ApiService.get(`/questions`, { page }, (status, data) => {
+      this.setState({ questions: [...this.state.questions, ...data], page: page + 1 });
     })
   }
 
@@ -31,16 +35,19 @@ class homePage extends Component {
         <h2>Questions</h2>
         <div className={ classes.container }>
           {
-            this.state.questions.map((q, index) => (
-              <Card
-                key={ index }
-                id={ utils.idExtractor(q.url) }
-                question={ q.question }
-                date={ q.published_at }
-                choices={ q.choices } />
-            ))
+            this.state.questions.map((q, index) => {
+              return (
+                <Card
+                  key={ index }
+                  id={ utils.idExtractor(q.url) }
+                  question={ q.question }
+                  date={ q.published_at }
+                  choices={ q.choices } />
+              )
+            })
           }
         </div>
+        <button className={ classes.more } onClick={ () => this.loadQuestions(this.state.page) }>More..</button>
       </Aux>
     );
   }
