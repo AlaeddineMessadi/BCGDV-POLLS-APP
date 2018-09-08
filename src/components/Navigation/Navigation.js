@@ -11,15 +11,17 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
+import classes from './Navigation.scss';
+
 const navigation = (props) => {
   return (
     <header>
-      <nav>
+      <nav className={ classes.navigation }>
         <ul>
           <li>
             <Link to={ props.navList.home }> { "<Back" } </Link>
           </li>
-          <li><h1>{ props.appTitle }</h1></li>
+          <li className={ classes.title }><h1>{ props.appTitle }</h1></li>
           <li>
             <Link to={ props.navList.create }> Create</Link>
           </li>

@@ -1,0 +1,27 @@
+.navigation {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.navigation li {
+  display: inherit;
+  padding: 0.3rem;
+}
+
+.navigation .title {
+  display: block;
+  flex-grow: 2;
+}
+
+.navigation li a {
+  align-self: center;
+}
+
+.navigation .title h1 {
+  text-align: center;
+}
