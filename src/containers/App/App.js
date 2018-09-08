@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { Switch, Route } from "react-router-dom";
 
 import Aux from '../../hoc/Aux';
+import Navigation from '../../components/Navigation/Navigation';
 import HomePage from '../../pages/HomePage';
 import CreatePage from '../../pages/CreatePage';
 import DetailsPage from '../../pages/DetailsPage';
 
 import './App.css';
+
+const appTitle = "BCGDV Poll App";
 
 const urls = {
   home: "/",
@@ -15,23 +18,24 @@ const urls = {
 }
 
 const navigationList = [
-  { url: urls.home, title: "Questions", page: HomePage },
-  { url: urls.details, title: "Question details", page: DetailsPage },
-  { url: urls.create, title: "Create question", page: CreatePage }
+  { url: urls.home, page: HomePage },
+  { url: urls.details, page: DetailsPage },
+  { url: urls.create, page: CreatePage }
 ];
 
 export default () => (
   <Aux>
-    <Navigation navList={ urls } />
+    <Navigation navList={ urls } appTitle={ appTitle } />
     <main>
       <Switch>
         { navigationList.map((nav, index) => (
-          <Route exact path={ nav.url } component={ nav.page } key={ index } />
+          <Route exact
+            key={ index }
+            path={ nav.url }
+            component={ nav.page } />
         )) }
       </Switch>
     </main>
   </Aux>
 );
 
-
-export default App;

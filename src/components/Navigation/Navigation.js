@@ -15,13 +15,17 @@ const navigation = (props) => {
   return (
     <header>
       <nav>
-        <Link to={ nav.home.url }> { nav.title }</Link>
-        <h1>{ props.title }</h1>
-        <Link to={ nav.create.url }> { nav.title }</Link>
+        <ul>
+          <li>
+            <Link to={ props.navList.home }> { "<Back" } </Link>
+          </li>
+          <li><h1>{ props.appTitle }</h1></li>
+          <li>
+            <Link to={ props.navList.create }> Create</Link>
+          </li>
+        </ul>
       </nav>
     </header>
-
-
   );
 }
 

@@ -4,6 +4,7 @@
  */
 
 import React, { Component } from 'react';
+import Aux from '../hoc/Aux';
 
 class detailsPage extends Component {
   constructor(props) {
@@ -13,10 +14,10 @@ class detailsPage extends Component {
 
   render() {
     return (
-      <div>
+      <Aux>
         <h1>Question Details </h1>
         <div>Question with votes </div>
-      </div>
+      </Aux>
     );
   }
 }

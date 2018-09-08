@@ -3,6 +3,7 @@
  */
 
 import React, { Component } from 'react';
+import Aux from '../hoc/Aux';
 
 class homePage extends Component {
   constructor(props) {
@@ -10,12 +11,14 @@ class homePage extends Component {
     this.state = { questions: [] };
   }
 
+
   render() {
+    console.log(this.context);
     return (
-      <div>
-        <h1>Questions </h1>
+      <Aux>
+        <h1>Questions</h1>
         <div>List of questions </div>
-      </div>
+      </Aux>
     );
   }
 }
