@@ -4,7 +4,7 @@
  */
 
 import React, { Component } from 'react';
-import Aux from '../hoc/Aux';
+import Aux from '../../hoc/Aux';
 
 class detailsPage extends Component {
   constructor(props) {

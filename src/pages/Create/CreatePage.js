@@ -3,7 +3,7 @@
  */
 
 import React, { Component } from 'react';
-import Aux from '../hoc/Aux';
+import Aux from '../../hoc/Aux';
 
 class createPage extends Component {
   constructor(props) {

@@ -3,9 +3,9 @@ import { Switch, Route } from "react-router-dom";
 
 import Aux from '../../hoc/Aux';
 import Navigation from '../../components/Navigation/Navigation';
-import HomePage from '../../pages/HomePage';
-import CreatePage from '../../pages/CreatePage';
-import DetailsPage from '../../pages/DetailsPage';
+import HomePage from '../../pages/Home/HomePage';
+import CreatePage from '../../pages/Create/CreatePage';
+import DetailsPage from '../../pages/Details/DetailsPage';
 
 import './App.css';
 

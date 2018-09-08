@@ -3,7 +3,9 @@
  */
 
 import React, { Component } from 'react';
-import Aux from '../hoc/Aux';
+import Aux from '../../hoc/Aux';
+
+import classes from './HomePage.scss';
 
 class homePage extends Component {
   constructor(props) {
@@ -17,7 +19,9 @@ class homePage extends Component {
     return (
       <Aux>
         <h1>Questions</h1>
-        <div>List of questions </div>
+        <div className={ classes.container }>
+          List of questions
+          </div>
       </Aux>
     );
   }
