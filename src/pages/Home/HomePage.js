@@ -7,7 +7,7 @@ import Aux from '../../hoc/Aux';
 
 import ApiService from '../../services/ApiService';
 import Card from '../../components/Card/Card';
-
+import helper from '../../utils/Utils';
 import classes from './HomePage.scss';
 
 class homePage extends Component {
@@ -21,7 +21,6 @@ class homePage extends Component {
 
   componentDidMount() {
     ApiService.get(`/questions?page=${this.state.page}`, (status, data) => {
-      console.log(data)
       this.setState({ questions: data });
     })
   }
@@ -36,7 +35,7 @@ class homePage extends Component {
             this.state.questions.map((q, index) => (
               <Card
                 key={ index }
-                id={ q.url.split('/').pop(-1) }
+                id={ helper.idExtractor(q.url) }
                 question={ q.question }
                 date={ q.published_at }
                 choices={ q.choices } />
