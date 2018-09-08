@@ -5,8 +5,7 @@
 import React, { Component } from 'react';
 import Aux from '../../hoc/Aux';
 
-import axios from 'axios';
-import Api from '../../services/ApiService';
+import ApiService from '../../services/ApiService';
 
 import classes from './HomePage.scss';
 
@@ -14,22 +13,10 @@ class homePage extends Component {
   constructor(props) {
     super(props);
     this.state = { questions: [] };
-    this.api = new Api();
   }
 
   componentDidMount() {
-    console.log(this.api.getEntryPoint())
-    // console.log(entryPoint);
-
-    // axios.get('https://polls.apiblueprint.org')
-    //   .then(function (response) {
-    //     // handle success
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //   })
+    console.log(ApiService.entryPoint);
   }
 
   render() {
