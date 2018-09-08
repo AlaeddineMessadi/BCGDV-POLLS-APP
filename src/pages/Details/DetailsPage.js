@@ -9,14 +9,17 @@ import Aux from '../../hoc/Aux';
 class detailsPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { question: null };
+    this.state = {
+      questionId: this.props.location.pathname,
+      question: null
+    };
   }
 
   render() {
     return (
       <Aux>
         <h1>Question Details </h1>
-        <div>Question with votes </div>
+        <div>{ this.state.questionId } </div>
       </Aux>
     );
   }

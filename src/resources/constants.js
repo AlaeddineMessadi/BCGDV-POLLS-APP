@@ -6,7 +6,7 @@ const appTitle = "BCGDV Poll App";
 
 const urls = {
   home: "/",
-  details: "/details",
+  details: "/details/:id",
   create: "/create",
 }
 

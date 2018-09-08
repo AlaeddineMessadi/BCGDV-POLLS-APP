@@ -36,6 +36,7 @@ class homePage extends Component {
             this.state.questions.map((q, index) => (
               <Card
                 key={ index }
+                id={ q.url.split('/').pop(-1) }
                 question={ q.question }
                 date={ q.published_at }
                 choices={ q.choices } />
