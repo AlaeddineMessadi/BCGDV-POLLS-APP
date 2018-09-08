@@ -7,8 +7,6 @@ import { appTitle, urls, navigationList } from '../../resources/constants';
 
 import './App.css';
 
-console.log(urls)
-
 export default () => (
   <Aux>
     <Navigation navList={ urls } appTitle={ appTitle } />

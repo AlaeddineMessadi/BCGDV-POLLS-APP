@@ -47,3 +47,29 @@
     }
   }
 }
+
+.button {
+  margin: 10px 38px;
+  float: right;
+  border: none;
+  width: 300px;
+  background-color: #3fbac2;
+  box-shadow: 0 5px 0 #2a939b;
+  color: white;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:hover {
+    background-color: #2a939b;
+    cursor: pointer;
+  }
+  &:active {
+    box-shadow: none;
+    top: 5px;
+  }
+
+  &.red {
+    background-color: red;
+  }
+}
