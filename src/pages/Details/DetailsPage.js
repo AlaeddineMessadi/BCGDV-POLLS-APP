@@ -32,6 +32,7 @@ class detailsPage extends Component {
   }
 
   selectChoiceHandler = (e) => {
+    // todo use setState
     if (this.state.active) this.state.active.className = '';
     const target = e.currentTarget;
 
@@ -59,11 +60,8 @@ class detailsPage extends Component {
         const question = this.state.question;
 
         // change the voted choice
-        question.choices.map((o, i) => {
-          if (o.url === data.url ? i : null) {
-            question.choices[i] = data;
-          }
-        });
+        const index = question.choices.findIndex((o) => o.url === data.url);
+        question.choices[index] = data;
 
         // change question state and button colour
         this.setState({ question: question });

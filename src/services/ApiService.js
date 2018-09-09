@@ -1,6 +1,4 @@
-
 import axios from 'axios';
-import qs from 'qs';
 
 const BASE_URL = 'https://polls.apiblueprint.org';
 
@@ -55,7 +53,7 @@ class ApiService {
       method: 'POST',
       url: path,
       responseType: 'json',
-      data: qs.stringify(payload)
+      data: payload
     }).then((response) => callback(response.status, response.data));
   }
 };
