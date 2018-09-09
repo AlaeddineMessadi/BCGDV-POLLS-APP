@@ -12,42 +12,46 @@ import classes from './CreatePage.scss';
 class createPage extends Component {
   constructor(props) {
     super(props);
-    // 2 choices at least by default 
+    // by default must be 2 choices at least
     this.state = {
       question: '',
       choices: [{ id: 0, value: '' }, { id: 1, value: '' }],
-      submit: false,
+      submit: true,
     };
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({ submit: true })
+    this.setState({ submit: false })
 
     const form = {
       question: this.state.question,
       choices: this.state.choices.map((e) => e.value)
     };
-    console.log(form)
-    ApiService.post(`/questions`, form,
-      (status, data) => {
-        console.info('Question is Submitted');
-        this.setState({ submit: !this.state.submit });
-      })
+
+    ApiService.post(`/questions`, form, (status, data) => {
+      console.info('Question is Submitted');
+      this.setState({ submit: !this.state.submit });
+    });
   }
 
   addChoiceInput = () => {
-    this.setState({ choices: [...this.state.choices, ...[{ id: this.state.choices.length, value: '' }]] });
-    console.log(this.state.choices)
+    this.setState({
+      choices:
+        [
+          ...this.state.choices,
+          ...[{ id: this.state.choices.length, value: '' }]
+        ]
+    });
   }
 
   handleChange = (e, id) => {
-    console.log(id)
     // handle question input change
     if (id === undefined || id === null || id < 0) {
       this.setState({ question: e.target.value });
       return;
     }
+
     // Handle choices input change 
     const choices = this.state.choices;
     const index = choices.findIndex((o) => o.id === id);
@@ -55,7 +59,7 @@ class createPage extends Component {
     // assign new value
     choices[index].value = e.target.value;
 
-    this.setState({ choices })
+    this.setState({ choices });
   }
 
   render() {
@@ -70,7 +74,7 @@ class createPage extends Component {
           <div>
             <fieldset>
               <legend>Choices (*):</legend>
-              <div ref="choices">
+              <div>
                 {
                   this.state.choices.map((e, index) => (<InputChoice key={ index } id={ e.id } onChange={ (event) => this.handleChange(event, e.id) } />))
                 }
@@ -78,7 +82,7 @@ class createPage extends Component {
               <a href={ null } className={ classes.more } onClick={ this.addChoiceInput }>+</a>
             </fieldset>
           </div>
-          <button type="submit" disabled={ this.state.submit }>Save</button>
+          <button type="submit" disabled={ !this.state.submit }>Save</button>
         </form>
       </Aux>
     );

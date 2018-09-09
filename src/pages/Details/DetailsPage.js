@@ -32,16 +32,19 @@ class detailsPage extends Component {
   }
 
   selectChoiceHandler = (e) => {
-    // todo use setState
-    if (this.state.active) this.state.active.className = '';
-    const target = e.currentTarget;
+    if (this.state.active) {
+      const active = this.state.active;
+      active.className = '';
+      this.setState({ active });
+    }
 
     // set element as active and set the vote id in the state
+    const target = e.currentTarget;
+    const choiceId = target.attributes['data-id'].value;
     target.className = classes.active;
-    const choiceId = e.currentTarget.attributes['data-id'].value;
+
     // update active state 
     this.setState({ active: e.currentTarget, choiceId })
-
   }
 
   submitVoteHandler = () => {
@@ -50,13 +53,11 @@ class detailsPage extends Component {
       return;
     }
 
-
     ApiService.post(
       `/questions/${this.state.questionId}/choices/${this.state.choiceId}`,
       { question_id: this.state.questionId, choice_id: this.state.choiceId },
       (status, data) => {
         // post the vote through the API
-        // clone question state
         const question = this.state.question;
 
         // change the voted choice
@@ -77,19 +78,16 @@ class detailsPage extends Component {
         <div className={ classes.question_container }>
           <p className={ classes.question }>Question: { this.state.question.question }</p>
           <ul>
-            { this.state.question.choices.map((choice, index) => {
-              console.log(choice.votes, this.state.totalVotes)
-              return (
-
-                < Vote
-                  key={ index }
-                  id={ utils.idExtractor(choice.url) }
-                  onClick={ this.selectChoiceHandler }
-                  choice={ choice }
-                  percentage={ utils.percentCalc(choice.votes, this.state.totalVotes) }
-                />
-              )
-            }) }
+            { this.state.question.choices.map((choice, index) => (
+              < Vote
+                key={ index }
+                id={ utils.idExtractor(choice.url) }
+                onClick={ this.selectChoiceHandler }
+                choice={ choice }
+                percentage={ utils.percentCalc(choice.votes, this.state.totalVotes) }
+              />
+            )
+            ) }
           </ul>
         </div>
         <button ref="vote" className={ classes.button } onClick={ this.submitVoteHandler }>Vote!</button>

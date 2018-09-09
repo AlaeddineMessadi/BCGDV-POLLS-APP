@@ -24,8 +24,16 @@ class homePage extends Component {
   }
 
   loadQuestions = (page) => {
+
     ApiService.get(`/questions`, { page }, (status, data) => {
-      this.setState({ questions: [...this.state.questions, ...data], page: page + 1 });
+      this.setState({
+        questions:
+          [
+            ...this.state.questions,
+            ...data
+          ],
+        page: page + 1
+      });
     })
   }
 
