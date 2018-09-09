@@ -63,8 +63,9 @@ class detailsPage extends Component {
         const index = question.choices.findIndex((o) => o.url === data.url);
         question.choices[index] = data;
 
+        this.setState({ question, totalVotes: this.state.totalVotes + 1 });
+
         // change question state and button colour
-        this.setState({ question: question });
         this.refs.vote.style = "background-color: #a1c45a";
       })
   }
@@ -76,15 +77,19 @@ class detailsPage extends Component {
         <div className={ classes.question_container }>
           <p className={ classes.question }>Question: { this.state.question.question }</p>
           <ul>
-            { this.state.question.choices.map((choice, index) => (
-              <Vote
-                key={ index }
-                id={ utils.idExtractor(choice.url) }
-                onClick={ this.selectChoiceHandler }
-                choice={ choice }
-                percentage={ utils.percentCalc(choice.votes, this.state.totalVotes) }
-              />
-            )) }
+            { this.state.question.choices.map((choice, index) => {
+              console.log(choice.votes, this.state.totalVotes)
+              return (
+
+                < Vote
+                  key={ index }
+                  id={ utils.idExtractor(choice.url) }
+                  onClick={ this.selectChoiceHandler }
+                  choice={ choice }
+                  percentage={ utils.percentCalc(choice.votes, this.state.totalVotes) }
+                />
+              )
+            }) }
           </ul>
         </div>
         <button ref="vote" className={ classes.button } onClick={ this.submitVoteHandler }>Vote!</button>

@@ -15,20 +15,24 @@ class createPage extends Component {
     // 2 choices at least by default 
     this.state = {
       question: '',
-      choices: [{ id: 1, value: '' }, { id: 2, value: '' }],
+      choices: [{ id: 0, value: '' }, { id: 1, value: '' }],
+      submit: false,
     };
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.setState({ submit: true })
 
     const form = {
       question: this.state.question,
       choices: this.state.choices.map((e) => e.value)
     };
+    console.log(form)
     ApiService.post(`/questions`, form,
       (status, data) => {
         console.info('Question is Submitted');
+        this.setState({ submit: !this.state.submit });
       })
   }
 
@@ -38,13 +42,13 @@ class createPage extends Component {
   }
 
   handleChange = (e, id) => {
+    console.log(id)
     // handle question input change
-    if (!id || id <= 0) {
+    if (id === undefined || id === null || id < 0) {
       this.setState({ question: e.target.value });
       return;
     }
     // Handle choices input change 
-    // change choice value
     const choices = this.state.choices;
     const index = choices.findIndex((o) => o.id === id);
 
@@ -74,7 +78,7 @@ class createPage extends Component {
               <a href={ null } className={ classes.more } onClick={ this.addChoiceInput }>+</a>
             </fieldset>
           </div>
-          <button type="submit">Save</button>
+          <button type="submit" disabled={ this.state.submit }>Save</button>
         </form>
       </Aux>
     );
