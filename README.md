@@ -9,3 +9,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 2. run `yarn start`
 
 
+## Screenshot:
+
+![screenshot](https://raw.githubusercontent.com/AlaeddineMessadi/BCGDV-POLLS-APP/master/public/screenshot.png)
