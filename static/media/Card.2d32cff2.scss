@@ -1,0 +1,25 @@
+.card {
+  width: 350px;
+  border: 1px solid gray;
+  box-shadow: 1px 1px 3px #888;
+  border-top: 10px solid #2a939b;
+  min-height: 100px;
+  padding: 10px;
+  margin: 10px;
+  a {
+    color: black;
+    text-decoration: none;
+  }
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 10px 0;
+}
+
+p {
+  margin: 10px 0;
+  line-height: 1.4em;
+  font-size: 0.8em;
+}

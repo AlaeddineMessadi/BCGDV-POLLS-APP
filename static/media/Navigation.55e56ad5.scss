@@ -1,0 +1,48 @@
+.navigation {
+  color: #f5f5f5;
+  background-color: #4d606e;
+  box-shadow: 0 3px 5px #626262;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    li {
+      display: inherit;
+      padding: 0.3rem;
+      margin: 10px;
+      a {
+        margin: 0 50px;
+        align-self: center;
+        &.btn {
+          background-color: #3fbac2;
+          box-shadow: 0 5px 0 #2a939b;
+          color: white;
+          padding: 1em 1.5em;
+          position: relative;
+          text-decoration: none;
+          text-transform: uppercase;
+          &:hover {
+            background-color: #2a939b;
+            cursor: pointer;
+          }
+          &:active {
+            box-shadow: none;
+            top: 5px;
+          }
+        }
+      }
+    }
+    .title {
+      display: block;
+      flex-grow: 1;
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 15px;
+        text-align: center;
+      }
+    }
+  }
+}
